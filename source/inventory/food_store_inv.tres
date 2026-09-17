@@ -1,31 +1,27 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=11 format=3 uid="uid://ctwfeyw7b3yo8"]
+[gd_resource type="Resource" script_class="Inventory" format=3 uid="uid://ctwfeyw7b3yo8"]
 
 [ext_resource type="Resource" uid="uid://cv4ybv53tcuoy" path="res://source/inventory/items/foods/banana.tres" id="1_fk4s0"]
 [ext_resource type="Resource" uid="uid://tn071d5jikpq" path="res://source/inventory/items/foods/carrot.tres" id="2_1ql6b"]
-[ext_resource type="Script" path="res://source/inventory/inv_slot.gd" id="2_14utl"]
+[ext_resource type="Script" uid="uid://bums24ar4txjj" path="res://source/inventory/inv_slot.gd" id="2_14utl"]
 [ext_resource type="Resource" uid="uid://bvd5qdrh6n4d4" path="res://source/inventory/items/foods/fish.tres" id="3_itn5j"]
 [ext_resource type="Resource" uid="uid://bv7i24o7a2x3n" path="res://source/inventory/items/foods/steak.tres" id="4_1qeiy"]
-[ext_resource type="Script" path="res://source/inventory/inventory.gd" id="5_22m00"]
+[ext_resource type="Script" uid="uid://d0jptkg7dc5ad" path="res://source/inventory/inventory.gd" id="5_22m00"]
 
 [sub_resource type="Resource" id="Resource_t53nb"]
 script = ExtResource("2_14utl")
 item = ExtResource("1_fk4s0")
-amount = 0
 
 [sub_resource type="Resource" id="Resource_tlong"]
 script = ExtResource("2_14utl")
 item = ExtResource("2_1ql6b")
-amount = 0
 
 [sub_resource type="Resource" id="Resource_sim2n"]
 script = ExtResource("2_14utl")
 item = ExtResource("3_itn5j")
-amount = 0
 
 [sub_resource type="Resource" id="Resource_k0785"]
 script = ExtResource("2_14utl")
 item = ExtResource("4_1qeiy")
-amount = 0
 
 [resource]
 script = ExtResource("5_22m00")
