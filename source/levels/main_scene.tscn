@@ -1,35 +1,35 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu4q2cnnfvxob"]
+[gd_scene format=3 uid="uid://bu4q2cnnfvxob"]
 
 [ext_resource type="PackedScene" uid="uid://x7ulk5y4x1li" path="res://source/utility/room_container.tscn" id="1_ry53k"]
 [ext_resource type="PackedScene" uid="uid://dqlrf8c1udujk" path="res://source/ui/StatsUI.tscn" id="1_w0dlc"]
 [ext_resource type="PackedScene" uid="uid://xf3patarp24k" path="res://source/ui/buttons_ui.tscn" id="2_jau2k"]
 [ext_resource type="PackedScene" uid="uid://cqkb8dmn22any" path="res://source/ui/time_ui.tscn" id="3_my7q0"]
 [ext_resource type="PackedScene" uid="uid://bdgkv6y4ook44" path="res://source/ui/coin_display.tscn" id="4_vilp1"]
-[ext_resource type="Script" path="res://source/scripts/DebugInterface.gd" id="5_osg2h"]
-[ext_resource type="Script" path="res://source/levels/PetXpLabel.gd" id="6_n53xp"]
+[ext_resource type="Script" uid="uid://be2rokf6wnj2a" path="res://source/scripts/DebugInterface.gd" id="5_osg2h"]
+[ext_resource type="Script" uid="uid://b02ooevah4bms" path="res://source/levels/PetXpLabel.gd" id="6_n53xp"]
 [ext_resource type="PackedScene" uid="uid://bgmol5skpa86r" path="res://source/ui/inv_ui.tscn" id="7_7jc1n"]
 [ext_resource type="PackedScene" uid="uid://covnlf81o1vpb" path="res://source/ui/computer.tscn" id="8_th8ct"]
-[ext_resource type="Script" path="res://source/levels/SceneSaver.gd" id="11_ab7tw"]
+[ext_resource type="Script" uid="uid://2j1pa5p3vhc4" path="res://source/levels/SceneSaver.gd" id="11_ab7tw"]
 [ext_resource type="PackedScene" uid="uid://4bwjsheuw3ok" path="res://source/utility/room_manager.tscn" id="11_kjfim"]
 
-[node name="MainScene" type="Node"]
+[node name="MainScene" type="Node" unique_id=178770068]
 
-[node name="RoomContainer" parent="." instance=ExtResource("1_ry53k")]
+[node name="RoomContainer" parent="." unique_id=1339529330 instance=ExtResource("1_ry53k")]
 
-[node name="StatusUI" parent="." instance=ExtResource("1_w0dlc")]
+[node name="StatusUI" parent="." unique_id=942921689 instance=ExtResource("1_w0dlc")]
 
-[node name="ButtonsUI" parent="." instance=ExtResource("2_jau2k")]
+[node name="ButtonsUI" parent="." unique_id=382940675 instance=ExtResource("2_jau2k")]
 
-[node name="TimeUI" parent="." groups=["SaveGroup"] instance=ExtResource("3_my7q0")]
-offset_left = 18.0
-offset_top = -13.0
-offset_right = 18.0
-offset_bottom = -13.0
+[node name="TimeUI" parent="." unique_id=4779451 groups=["SaveGroup"] instance=ExtResource("3_my7q0")]
+offset_left = 2.0
+offset_top = -48.0
+offset_right = 2.0
+offset_bottom = -48.0
 
-[node name="CoinDisplay" parent="." instance=ExtResource("4_vilp1")]
+[node name="CoinDisplay" parent="." unique_id=755519700 instance=ExtResource("4_vilp1")]
 position = Vector2(456, 120)
 
-[node name="DebugInterface" type="Control" parent="."]
+[node name="DebugInterface" type="Control" parent="." unique_id=268776856]
 visible = false
 layout_mode = 3
 anchors_preset = 0
@@ -37,7 +37,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_osg2h")
 
-[node name="PetXpLabel" type="Label" parent="DebugInterface"]
+[node name="PetXpLabel" type="Label" parent="DebugInterface" unique_id=1554060746]
 layout_mode = 0
 offset_left = 322.0
 offset_top = 157.0
@@ -45,18 +45,18 @@ offset_right = 362.0
 offset_bottom = 180.0
 script = ExtResource("6_n53xp")
 
-[node name="InvUI" parent="." instance=ExtResource("7_7jc1n")]
+[node name="InvUI" parent="." unique_id=1025051302 instance=ExtResource("7_7jc1n")]
 visible = false
 
-[node name="Computer" parent="." instance=ExtResource("8_th8ct")]
+[node name="Computer" parent="." unique_id=1049013021 instance=ExtResource("8_th8ct")]
 visible = false
 
-[node name="RoomManager" parent="." instance=ExtResource("11_kjfim")]
+[node name="RoomManager" parent="." unique_id=894612382 instance=ExtResource("11_kjfim")]
 
-[node name="SceneSaver" type="Node" parent="."]
+[node name="SceneSaver" type="Node" parent="." unique_id=960778619]
 script = ExtResource("11_ab7tw")
 
-[node name="Timer" type="Timer" parent="SceneSaver"]
+[node name="Timer" type="Timer" parent="SceneSaver" unique_id=1379870145]
 wait_time = 5.0
 autostart = true
 

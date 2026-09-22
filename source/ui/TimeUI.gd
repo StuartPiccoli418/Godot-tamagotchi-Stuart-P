@@ -16,7 +16,7 @@ var day: int
 var hour: int
 var minute: int
 
-@export var INGAME_SPEED = 1.0
+@export var INGAME_SPEED = 100.0
 @export var INITIAL_HOUR = 12:
 	set(h):
 		INITIAL_HOUR = h
@@ -33,13 +33,13 @@ func _process(delta):
 	time += delta * INGAME_TO_REAL_MINUTE_DURATION * INGAME_SPEED
 	recalculate_time()
 
-func on_save_game(saved_data:Array[SavedData]):
-	var my_data = SavedTime.new()
-	my_data.time = time
-	saved_data.append(my_data)
+# func on_save_game(saved_data:Array[SavedData]):
+	# var my_data = SavedTime.new()
+	# my_data.time = time
+	# saved_data.append(my_data)
 
-func on_load_game(saved_data:SavedData):
-	time = saved_data.time
+# func on_load_game(saved_data:SavedData):
+	# time = saved_data.time
 		
 func recalculate_time():
 	var total_minutes = int(time / INGAME_TO_REAL_MINUTE_DURATION)
@@ -60,7 +60,16 @@ func rotate_daytime_sprite(current_day_minutes):
 	
 func set_time():
 	daysLabel.text = 'Day'+ str(day+1)
-	hoursLabel.text = str(hour) + ':' + str(minute)
+	if hour < 13:
+		if minute <= 9 and hour < 13:
+			hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'PM'
+		if minute >= 9 and hour < 13:
+			hoursLabel.text = str(hour) + ':' + str(minute) + 'PM'
+		if minute <= 9 and hour < 25:
+			hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'AM'
+		if minute >= 9 and hour < 25:
+			hoursLabel.text = str(hour) + ':' + str(minute) + 'AM'
+	
 	
 func sleep_toggled(pet_state):
 	if pet_state == Pet.PetState.SLEEPING:
