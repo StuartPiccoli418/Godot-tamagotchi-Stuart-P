@@ -60,17 +60,20 @@ func rotate_daytime_sprite(current_day_minutes):
 	
 func set_time():
 	daysLabel.text = 'Day'+ str(day+1)
-	if hour < 13:
-		if minute <= 9 and hour < 13:
-			hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'PM'
-		if minute >= 9 and hour < 13:
-			hoursLabel.text = str(hour) + ':' + str(minute) + 'PM'
-		if minute <= 9 and hour < 25:
-			hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'AM'
-		if minute >= 9 and hour < 25:
-			hoursLabel.text = str(hour) + ':' + str(minute) + 'AM'
-	
-	
+
+	if minute <= 9 and hour <= 12:
+				hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'PM'
+				print(hour)
+	if minute > 9 and hour <= 12:
+				hoursLabel.text = str(hour) + ':' + str(minute) + 'PM'
+				print(hour)
+	if minute <= 9 and hour > 13:
+				hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'AM'
+				print(hour)
+	if minute > 9 and hour > 13:
+				hoursLabel.text = str(hour) + ':' + str(minute) + 'AM'
+				print(hour)
+			
 func sleep_toggled(pet_state):
 	if pet_state == Pet.PetState.SLEEPING:
 		INGAME_SPEED = INGAME_SPEED * 2
