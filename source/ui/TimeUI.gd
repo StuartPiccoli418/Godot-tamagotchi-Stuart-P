@@ -56,6 +56,7 @@ func recalculate_time():
 
 func rotate_daytime_sprite(current_day_minutes):
 	if current_day_minutes != 0:
+
 		sprite.rotation_degrees = ((current_day_minutes / 360.0) * 90) + 160 # Temp # Set the rotation of the daytime sprite to the current minute, one day is one full rotation.
 func set_time():
 	daysLabel.text = "Day " + str(day + 1)
