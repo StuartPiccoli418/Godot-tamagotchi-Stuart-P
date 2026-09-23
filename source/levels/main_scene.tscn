@@ -21,10 +21,10 @@
 [node name="ButtonsUI" parent="." unique_id=382940675 instance=ExtResource("2_jau2k")]
 
 [node name="TimeUI" parent="." unique_id=4779451 groups=["SaveGroup"] instance=ExtResource("3_my7q0")]
-offset_left = 2.0
-offset_top = -48.0
-offset_right = 2.0
-offset_bottom = -48.0
+offset_left = -7.0
+offset_top = -59.0
+offset_right = -7.0
+offset_bottom = -59.0
 
 [node name="CoinDisplay" parent="." unique_id=755519700 instance=ExtResource("4_vilp1")]
 position = Vector2(456, 120)

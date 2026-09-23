@@ -57,22 +57,36 @@ func recalculate_time():
 func rotate_daytime_sprite(current_day_minutes):
 	if current_day_minutes != 0:
 		sprite.rotation_degrees = ((current_day_minutes / 360.0) * 90) + 160 # Temp # Set the rotation of the daytime sprite to the current minute, one day is one full rotation.
-	
 func set_time():
-	daysLabel.text = 'Day'+ str(day+1)
+	daysLabel.text = "Day " + str(day + 1)
+	# "Day" + day + 1 since we don't want day to start at zero.
 
-	if minute <= 9 and hour <= 12:
-				hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'PM'
-				print(hour)
-	if minute > 9 and hour <= 12:
-				hoursLabel.text = str(hour) + ':' + str(minute) + 'PM'
-				print(hour)
-	if minute <= 9 and hour > 13:
-				hoursLabel.text = str(hour) + ':' + "0" + str(minute) + 'AM'
-				print(hour)
-	if minute > 9 and hour > 13:
-				hoursLabel.text = str(hour) + ':' + str(minute) + 'AM'
-				print(hour)
+	var display_h = hour
+	
+	# copy the hour to another var without overriding hour 
+	
+	var am_pm = "AM"
+	# Game starts at 12 PM day 1
+	
+	# variables 
+	if display_h == 0:
+		display_h = 12
+		#print(display_h)
+		# if the clock hits midnight, set hour to 12:00AM
+	elif display_h == 12:
+		am_pm = "PM"
+		#print(display_h)
+	# if the clock is at midday, keep the hour at 12 and change am to pm
+	elif display_h > 12:
+		display_h -= 12
+		# subtract 12 from whatever display_h is (if display_h = 15, 15-12 = 3PM)
+		#print(display_h)
+		am_pm = "PM"
+	hoursLabel.text = "%d:%02d %s" % [display_h, minute, am_pm]
+	
+	# %d is interger for display_h
+	# %02d is interger, but add two leading zeros if needed (5 --> 05, 15 --> 15) for minute 
+	# %s means use the string am_pm ("AM" or "PM") for am_pm
 			
 func sleep_toggled(pet_state):
 	if pet_state == Pet.PetState.SLEEPING:
