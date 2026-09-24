@@ -16,7 +16,7 @@ var day: int
 var hour: int
 var minute: int
 
-@export var INGAME_SPEED = 3
+@export var INGAME_SPEED = 6
 @export var INITIAL_HOUR = 12:
 	set(h):
 		INITIAL_HOUR = h
