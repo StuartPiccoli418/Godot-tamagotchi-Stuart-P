@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://4bwjsheuw3ok"]
+[gd_scene format=3 uid="uid://4bwjsheuw3ok"]
 
-[ext_resource type="Script" path="res://source/levels/RoomManager.gd" id="1_6rpfq"]
+[ext_resource type="Script" uid="uid://dgoq1dtccylqt" path="res://source/levels/RoomManager.gd" id="1_6rpfq"]
 
-[node name="RoomManager" type="Node" groups=["SaveGroup"]]
+[node name="RoomManager" type="Node" unique_id=605592796 groups=["SaveGroup"]]
 script = ExtResource("1_6rpfq")
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=552323300 groups=["SaveGroup"]]
 offset_left = 448.0
 offset_top = 312.0
 offset_right = 506.0

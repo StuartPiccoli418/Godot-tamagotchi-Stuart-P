@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cd38e14236m5u"]
+[gd_scene format=3 uid="uid://cd38e14236m5u"]
 
 [ext_resource type="Texture2D" uid="uid://r05oud0to665" path="res://assets/img/inventory-background.png" id="1_efp2u"]
-[ext_resource type="Script" path="res://source/ui/pet_introduction_ui.gd" id="1_ss72o"]
+[ext_resource type="Script" uid="uid://blcirqhctkrrx" path="res://source/ui/pet_introduction_ui.gd" id="1_ss72o"]
 [ext_resource type="Texture2D" uid="uid://bhfjprgp4pnof" path="res://assets/img/Pets/capybara.png" id="2_ljxed"]
 
-[node name="PetIntroductionUI" type="Control" groups=["PetIntroductionUI"]]
+[node name="PetIntroductionUI" type="Control" unique_id=1943121452 groups=["PetIntroductionUI"]]
 process_mode = 3
 z_index = 2
 z_as_relative = false
@@ -18,7 +18,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 script = ExtResource("1_ss72o")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=989620895]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,7 +38,7 @@ patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="ContinueButton" type="Button" parent="NinePatchRect"]
+[node name="ContinueButton" type="Button" parent="NinePatchRect" unique_id=222911016]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -53,7 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Continue"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect" unique_id=681664593]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -67,28 +67,28 @@ offset_bottom = 38.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PetImage" type="TextureRect" parent="NinePatchRect/HBoxContainer"]
+[node name="PetImage" type="TextureRect" parent="NinePatchRect/HBoxContainer" unique_id=2081795579]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(86, 86)
 layout_mode = 2
 texture = ExtResource("2_ljxed")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="NinePatchRect/HBoxContainer" unique_id=1610772398]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="NameLabel" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer" unique_id=1842360271]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Name: Jeff"
 
-[node name="AnimalLabel" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="AnimalLabel" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer" unique_id=595724949]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Animal: Capybara"
 
-[node name="StayLabel" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="StayLabel" type="Label" parent="NinePatchRect/HBoxContainer/VBoxContainer" unique_id=1772907160]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Stay Duration: 1 day"
