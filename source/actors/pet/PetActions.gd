@@ -118,11 +118,11 @@ func clean():
 
 func play():
 	pet.pet_stats.fun += 3
-	pet.pet_stats.tiredness += 15
+	pet.pet_stats.tiredness += 20
 	pet.gain_experience(1)
 	
 func socialize():
-	pet.pet_stats.social += 5
+	pet.pet_stats.social += 10
 	pet.pet_stats.tiredness += 10
 	pet.pet_stats.hunger += 10
 	pet.gain_experience(1)
