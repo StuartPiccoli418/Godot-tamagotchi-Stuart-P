@@ -64,11 +64,11 @@ func update():
 	update_stats_total(pet.pet_stats.total_stats)
 	
 func update_hunger(value):
-	hungerBar.value = max(10, value)
+	hungerBar.value = max(1, value)
 	labelHunger.text = str(value) + '%'
 	
 func update_happiness(value):
-	happinessBar.value = max(10, value)
+	happinessBar.value = max(1, value)
 	labelHappiness.text = str(value) + '%'
 	
 func update_hygiene(value):
@@ -76,15 +76,15 @@ func update_hygiene(value):
 	labelHygiene.text = str(value) + '%'
 	
 func update_fun(value):
-	funBar.value = max(10, value)
+	funBar.value = max(1, value)
 	labelFun.text = str(value) + '%'
 	
 func update_social(value):
-	socialBar.value = max(10, value)
+	socialBar.value = max(1, value)
 	labelSocial.text = str(value) + '%'
 	
 func update_tiredness(value):
-	tirednessBar.value = max(10, value)
+	tirednessBar.value = max(1, value)
 	labelTiredness.text = str(value) + '%'
 	
 func update_stats_total(value):
@@ -93,4 +93,3 @@ func update_stats_total(value):
 	
 func update_stats_average(value):
 	statsAverageLabel.text = 'average:' + str(value / 6)
-

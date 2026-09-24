@@ -11,7 +11,6 @@ var rooms: Array = []
 var current_pet: Node = null
 
 signal ActivePetChanged(pet)
-
 func _ready():
 	# Get all rooms inside the RoomContainer
 	rooms = roomContainer.get_children()

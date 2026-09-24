@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://covnlf81o1vpb"]
+[gd_scene format=3 uid="uid://covnlf81o1vpb"]
 
-[ext_resource type="Script" path="res://source/ui/computer.gd" id="1_0qtuq"]
+[ext_resource type="Script" uid="uid://6rswkessv7h8" path="res://source/ui/computer.gd" id="1_0qtuq"]
 [ext_resource type="Texture2D" uid="uid://bgq2pwa0i3v3l" path="res://assets/img/UI/desktopbg.png" id="1_xk5u5"]
 [ext_resource type="Texture2D" uid="uid://cj02tmjc5f21w" path="res://assets/img/UI/pcboarder.png" id="2_pl3y4"]
 [ext_resource type="Texture2D" uid="uid://k2vxwnrk2xq8" path="res://assets/img/UI/guestbook.png" id="3_qw5oo"]
@@ -10,13 +10,13 @@
 [ext_resource type="Texture2D" uid="uid://c11x6nsmrwr31" path="res://assets/img/UI/reviewstar.png" id="6_msmab"]
 [ext_resource type="Texture2D" uid="uid://ejunwhnvhvsm" path="res://assets/img/UI/bin.png" id="7_pj6x8"]
 [ext_resource type="Texture2D" uid="uid://dm6jggkqy6kji" path="res://assets/img/UI/powerbutton.png" id="8_ac1i6"]
-[ext_resource type="Script" path="res://source/ui/FoodShop.gd" id="11_llelh"]
+[ext_resource type="Script" uid="uid://dhikh3nucfk16" path="res://source/ui/FoodShop.gd" id="11_llelh"]
 [ext_resource type="PackedScene" uid="uid://ywfy0nxoj4an" path="res://source/inventory/item_ui_slot.tscn" id="13_ova5w"]
-[ext_resource type="Script" path="res://source/ui/RoomExpandShop.gd" id="14_ngfvj"]
+[ext_resource type="Script" uid="uid://bae0iw8v4uhxy" path="res://source/ui/RoomExpandShop.gd" id="14_ngfvj"]
 [ext_resource type="Texture2D" uid="uid://d2i8wlqqqv23s" path="res://assets/img/coin.png" id="14_w0mfg"]
-[ext_resource type="Script" path="res://source/ui/StatsView.gd" id="15_3ascn"]
+[ext_resource type="Script" uid="uid://bxlq846edn61w" path="res://source/ui/StatsView.gd" id="15_3ascn"]
 [ext_resource type="FontFile" uid="uid://denthodlb7iy2" path="res://assets/fonts/EnterCommand-Bold.ttf" id="15_vb7wd"]
-[ext_resource type="Script" path="res://source/ui/ReviewsView.gd" id="16_mrjfw"]
+[ext_resource type="Script" uid="uid://btunixmdiygkj" path="res://source/ui/ReviewsView.gd" id="16_mrjfw"]
 
 [sub_resource type="Animation" id="Animation_vpbpy"]
 length = 0.001
@@ -67,9 +67,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_parca"]
 _data = {
-"RESET": SubResource("Animation_vpbpy"),
-"ZoomIn": SubResource("Animation_hpwv3"),
-"ZoomOut": SubResource("Animation_wle5p")
+&"RESET": SubResource("Animation_vpbpy"),
+&"ZoomIn": SubResource("Animation_hpwv3"),
+&"ZoomOut": SubResource("Animation_wle5p")
 }
 
 [sub_resource type="Animation" id="Animation_xf8xd"]
@@ -165,18 +165,18 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jqw23"]
 _data = {
-"RESET": SubResource("Animation_xf8xd"),
-"TransIn": SubResource("Animation_fbr1d"),
-"TransOut": SubResource("Animation_or0bm"),
-"ZoomIn": SubResource("Animation_pmuwf"),
-"ZoomOut": SubResource("Animation_qmyax")
+&"RESET": SubResource("Animation_xf8xd"),
+&"TransIn": SubResource("Animation_fbr1d"),
+&"TransOut": SubResource("Animation_or0bm"),
+&"ZoomIn": SubResource("Animation_pmuwf"),
+&"ZoomOut": SubResource("Animation_qmyax")
 }
 
-[node name="Computer" type="CanvasLayer"]
+[node name="Computer" type="CanvasLayer" unique_id=1294839549]
 process_mode = 3
 script = ExtResource("1_0qtuq")
 
-[node name="ComputerPanel" type="Panel" parent="."]
+[node name="ComputerPanel" type="Panel" parent="." unique_id=2131407935]
 self_modulate = Color(1, 1, 1, 0)
 anchors_preset = 8
 anchor_left = 0.5
@@ -187,7 +187,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.5, 1.5)
 
-[node name="BackgroundTexture" type="TextureRect" parent="ComputerPanel"]
+[node name="BackgroundTexture" type="TextureRect" parent="ComputerPanel" unique_id=810819066]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -196,7 +196,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_xk5u5")
 
-[node name="PcBoarder" type="TextureRect" parent="ComputerPanel"]
+[node name="PcBoarder" type="TextureRect" parent="ComputerPanel" unique_id=929151417]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -211,26 +211,26 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_pl3y4")
 
-[node name="ComputerButtons" type="HBoxContainer" parent="ComputerPanel"]
+[node name="ComputerButtons" type="HBoxContainer" parent="ComputerPanel" unique_id=236416811]
 layout_mode = 0
 offset_left = -162.0
 offset_top = 95.0
 offset_right = 38.0
 offset_bottom = 127.0
 
-[node name="PowerButton" type="TextureButton" parent="ComputerPanel/ComputerButtons"]
+[node name="PowerButton" type="TextureButton" parent="ComputerPanel/ComputerButtons" unique_id=491186264]
 layout_mode = 2
 texture_normal = ExtResource("8_ac1i6")
 stretch_mode = 3
 
-[node name="BackButton" type="TextureButton" parent="ComputerPanel/ComputerButtons"]
+[node name="BackButton" type="TextureButton" parent="ComputerPanel/ComputerButtons" unique_id=1434069825]
 self_modulate = Color(1, 0.556863, 0.227451, 1)
 layout_mode = 2
 texture_normal = ExtResource("8_ac1i6")
 stretch_mode = 3
 flip_v = true
 
-[node name="Desktop" type="Control" parent="ComputerPanel"]
+[node name="Desktop" type="Control" parent="ComputerPanel" unique_id=1977278169]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -244,7 +244,7 @@ offset_bottom = 95.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ComputerPanel/Desktop"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ComputerPanel/Desktop" unique_id=788180879]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 18.0
@@ -253,19 +253,19 @@ offset_bottom = 144.0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="GuestBookButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer"]
+[node name="GuestBookButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer" unique_id=549829224]
 layout_mode = 2
 texture_normal = ExtResource("3_qw5oo")
 
-[node name="StatsButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer"]
+[node name="StatsButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer" unique_id=2098690092]
 layout_mode = 2
 texture_normal = ExtResource("4_0nmrn")
 
-[node name="ShopButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer"]
+[node name="ShopButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer" unique_id=415221212]
 layout_mode = 2
 texture_normal = ExtResource("5_qeypx")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="ComputerPanel/Desktop"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ComputerPanel/Desktop" unique_id=2121384087]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -278,31 +278,31 @@ grow_horizontal = 0
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ReviewsButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer2"]
+[node name="ReviewsButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer2" unique_id=1548160057]
 layout_mode = 2
 texture_normal = ExtResource("6_msmab")
 stretch_mode = 3
 
-[node name="ContainerSpacer" type="Control" parent="ComputerPanel/Desktop/VBoxContainer2"]
+[node name="ContainerSpacer" type="Control" parent="ComputerPanel/Desktop/VBoxContainer2" unique_id=1319753576]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="BinButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer2"]
+[node name="BinButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer2" unique_id=637136499]
 layout_mode = 2
 texture_normal = ExtResource("7_pj6x8")
 stretch_mode = 3
 
-[node name="TempButtons" type="VBoxContainer" parent="ComputerPanel/Desktop"]
+[node name="TempButtons" type="VBoxContainer" parent="ComputerPanel/Desktop" unique_id=380100267]
 layout_mode = 0
 offset_left = 135.0
 offset_right = 196.0
 offset_bottom = 111.0
 
-[node name="RoomsButton" type="Button" parent="ComputerPanel/Desktop/TempButtons"]
+[node name="RoomsButton" type="Button" parent="ComputerPanel/Desktop/TempButtons" unique_id=1229787384]
 layout_mode = 2
 text = "Rooms"
 
-[node name="FoodShop" type="Control" parent="ComputerPanel"]
+[node name="FoodShop" type="Control" parent="ComputerPanel" unique_id=1809688068]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -318,7 +318,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_llelh")
 
-[node name="ShopTexture" type="TextureRect" parent="ComputerPanel/FoodShop"]
+[node name="ShopTexture" type="TextureRect" parent="ComputerPanel/FoodShop" unique_id=1854271100]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -334,7 +334,7 @@ grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_pjqif")
 
-[node name="GridContainer" type="GridContainer" parent="ComputerPanel/FoodShop"]
+[node name="GridContainer" type="GridContainer" parent="ComputerPanel/FoodShop" unique_id=335832000]
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 1
 anchors_preset = 8
@@ -350,19 +350,19 @@ grow_horizontal = 2
 grow_vertical = 2
 columns = 2
 
-[node name="ItemUISlot" parent="ComputerPanel/FoodShop/GridContainer" instance=ExtResource("13_ova5w")]
+[node name="ItemUISlot" parent="ComputerPanel/FoodShop/GridContainer" unique_id=1232336521 instance=ExtResource("13_ova5w")]
 layout_mode = 2
 
-[node name="ItemUISlot2" parent="ComputerPanel/FoodShop/GridContainer" instance=ExtResource("13_ova5w")]
+[node name="ItemUISlot2" parent="ComputerPanel/FoodShop/GridContainer" unique_id=1425752620 instance=ExtResource("13_ova5w")]
 layout_mode = 2
 
-[node name="ItemUISlot3" parent="ComputerPanel/FoodShop/GridContainer" instance=ExtResource("13_ova5w")]
+[node name="ItemUISlot3" parent="ComputerPanel/FoodShop/GridContainer" unique_id=1625478664 instance=ExtResource("13_ova5w")]
 layout_mode = 2
 
-[node name="ItemUISlot4" parent="ComputerPanel/FoodShop/GridContainer" instance=ExtResource("13_ova5w")]
+[node name="ItemUISlot4" parent="ComputerPanel/FoodShop/GridContainer" unique_id=2117688860 instance=ExtResource("13_ova5w")]
 layout_mode = 2
 
-[node name="SelectedItemLabel" type="Label" parent="ComputerPanel/FoodShop"]
+[node name="SelectedItemLabel" type="Label" parent="ComputerPanel/FoodShop" unique_id=297280905]
 layout_mode = 0
 offset_left = 4.33333
 offset_top = 167.667
@@ -370,18 +370,18 @@ offset_right = 74.3333
 offset_bottom = 190.667
 text = "Selected:"
 
-[node name="SelectedItemSprite" type="Sprite2D" parent="ComputerPanel/FoodShop"]
+[node name="SelectedItemSprite" type="Sprite2D" parent="ComputerPanel/FoodShop" unique_id=2070428919]
 position = Vector2(91, 174.333)
 texture = ExtResource("14_w0mfg")
 
-[node name="ItemPrice" type="Label" parent="ComputerPanel/FoodShop"]
+[node name="ItemPrice" type="Label" parent="ComputerPanel/FoodShop" unique_id=558164431]
 layout_mode = 0
 offset_left = 107.667
 offset_top = 168.333
 offset_right = 147.667
 offset_bottom = 191.333
 
-[node name="Button" type="Button" parent="ComputerPanel/FoodShop"]
+[node name="Button" type="Button" parent="ComputerPanel/FoodShop" unique_id=163758385]
 layout_mode = 0
 offset_left = 231.0
 offset_top = 155.667
@@ -389,12 +389,10 @@ offset_right = 311.0
 offset_bottom = 186.667
 text = "Purchase"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/FoodShop"]
-libraries = {
-"": SubResource("AnimationLibrary_parca")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/FoodShop" unique_id=1157243815]
+libraries/ = SubResource("AnimationLibrary_parca")
 
-[node name="RoomExpandShop" type="Control" parent="ComputerPanel"]
+[node name="RoomExpandShop" type="Control" parent="ComputerPanel" unique_id=270078074]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -410,7 +408,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("14_ngfvj")
 
-[node name="ShopTexture" type="TextureRect" parent="ComputerPanel/RoomExpandShop"]
+[node name="ShopTexture" type="TextureRect" parent="ComputerPanel/RoomExpandShop" unique_id=212618911]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -426,46 +424,44 @@ grow_vertical = 2
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("4_pjqif")
 
-[node name="ItemPrice" type="Label" parent="ComputerPanel/RoomExpandShop"]
+[node name="ItemPrice" type="Label" parent="ComputerPanel/RoomExpandShop" unique_id=950034892]
 layout_mode = 0
 offset_left = 107.667
 offset_top = 168.333
 offset_right = 147.667
 offset_bottom = 191.333
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/RoomExpandShop"]
-libraries = {
-"": SubResource("AnimationLibrary_parca")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/RoomExpandShop" unique_id=1030319701]
+libraries/ = SubResource("AnimationLibrary_parca")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ComputerPanel/RoomExpandShop"]
+[node name="VBoxContainer" type="VBoxContainer" parent="ComputerPanel/RoomExpandShop" unique_id=2015883811]
 layout_mode = 0
 offset_top = 35.0
 offset_right = 322.0
 offset_bottom = 154.0
 
-[node name="Label" type="Label" parent="ComputerPanel/RoomExpandShop/VBoxContainer"]
+[node name="Label" type="Label" parent="ComputerPanel/RoomExpandShop/VBoxContainer" unique_id=300102715]
 layout_mode = 2
 text = "Buy an extra hotel room for:"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ComputerPanel/RoomExpandShop/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ComputerPanel/RoomExpandShop/VBoxContainer" unique_id=1535391069]
 layout_mode = 2
 alignment = 1
 
-[node name="PriceLabel" type="Label" parent="ComputerPanel/RoomExpandShop/VBoxContainer/HBoxContainer"]
+[node name="PriceLabel" type="Label" parent="ComputerPanel/RoomExpandShop/VBoxContainer/HBoxContainer" unique_id=1077593409]
 layout_mode = 2
 text = "8"
 
-[node name="SelectedItemSprite" type="TextureRect" parent="ComputerPanel/RoomExpandShop/VBoxContainer/HBoxContainer"]
+[node name="SelectedItemSprite" type="TextureRect" parent="ComputerPanel/RoomExpandShop/VBoxContainer/HBoxContainer" unique_id=349779459]
 layout_mode = 2
 texture = ExtResource("14_w0mfg")
 
-[node name="Button" type="Button" parent="ComputerPanel/RoomExpandShop/VBoxContainer"]
+[node name="Button" type="Button" parent="ComputerPanel/RoomExpandShop/VBoxContainer" unique_id=1845753561]
 layout_mode = 2
 text = "Purchase"
 
-[node name="MaxRoomsLabel" type="Label" parent="ComputerPanel/RoomExpandShop"]
+[node name="MaxRoomsLabel" type="Label" parent="ComputerPanel/RoomExpandShop" unique_id=1343688820]
 visible = false
 layout_mode = 0
 offset_left = 4.0
@@ -476,7 +472,7 @@ text = "You already have max amount of rooms."
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="StatsView" type="Control" parent="ComputerPanel"]
+[node name="StatsView" type="Control" parent="ComputerPanel" unique_id=1068113979]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -492,7 +488,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("15_3ascn")
 
-[node name="ColorRect" type="ColorRect" parent="ComputerPanel/StatsView"]
+[node name="ColorRect" type="ColorRect" parent="ComputerPanel/StatsView" unique_id=342581042]
 modulate = Color(0, 0.0862745, 0.345098, 1)
 layout_mode = 1
 anchors_preset = 15
@@ -501,19 +497,17 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/StatsView"]
-libraries = {
-"": SubResource("AnimationLibrary_parca")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/StatsView" unique_id=1946568068]
+libraries/ = SubResource("AnimationLibrary_parca")
 
-[node name="StatsTextContainer" type="VBoxContainer" parent="ComputerPanel/StatsView"]
+[node name="StatsTextContainer" type="VBoxContainer" parent="ComputerPanel/StatsView" unique_id=1029695177]
 layout_mode = 0
 offset_left = 7.33333
 offset_top = 5.0
 offset_right = 164.333
 offset_bottom = 228.0
 
-[node name="Label" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer"]
+[node name="Label" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer" unique_id=537840916]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 text = "Stats:"
@@ -521,7 +515,7 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Label2" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer"]
+[node name="Label2" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer" unique_id=2028608986]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 text = "Stats:"
@@ -529,7 +523,7 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Label3" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer"]
+[node name="Label3" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer" unique_id=1819744994]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 text = "Stats:"
@@ -537,7 +531,7 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Label4" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer"]
+[node name="Label4" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer" unique_id=785733267]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 text = "Stats:"
@@ -545,7 +539,7 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Label5" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer"]
+[node name="Label5" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer" unique_id=1666404421]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 text = "Stats:"
@@ -553,12 +547,12 @@ uppercase = true
 visible_characters = 0
 visible_ratio = 0.0
 
-[node name="Label6" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer"]
+[node name="Label6" type="Label" parent="ComputerPanel/StatsView/StatsTextContainer" unique_id=336877810]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 uppercase = true
 
-[node name="ReviewsView" type="Control" parent="ComputerPanel"]
+[node name="ReviewsView" type="Control" parent="ComputerPanel" unique_id=1189698536]
 visible = false
 layout_mode = 1
 anchors_preset = 0
@@ -568,7 +562,7 @@ offset_right = 164.0
 offset_bottom = 97.0
 script = ExtResource("16_mrjfw")
 
-[node name="ColorRect" type="ColorRect" parent="ComputerPanel/ReviewsView"]
+[node name="ColorRect" type="ColorRect" parent="ComputerPanel/ReviewsView" unique_id=1906479619]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -577,12 +571,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0980392, 1, 1, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/ReviewsView"]
-libraries = {
-"": SubResource("AnimationLibrary_parca")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ComputerPanel/ReviewsView" unique_id=609834796]
+libraries/ = SubResource("AnimationLibrary_parca")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ComputerPanel/ReviewsView"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ComputerPanel/ReviewsView" unique_id=959012331]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -590,21 +582,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReviewsContainer" type="VBoxContainer" parent="ComputerPanel/ReviewsView/ScrollContainer"]
+[node name="ReviewsContainer" type="VBoxContainer" parent="ComputerPanel/ReviewsView/ScrollContainer" unique_id=638126832]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="ComputerPanel/ReviewsView/ScrollContainer/ReviewsContainer"]
+[node name="Label" type="Label" parent="ComputerPanel/ReviewsView/ScrollContainer/ReviewsContainer" unique_id=1035136907]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("15_vb7wd")
 text = "You Have no reviews yet."
 uppercase = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_jqw23")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=769767374]
+libraries/ = SubResource("AnimationLibrary_jqw23")
 
 [connection signal="pressed" from="ComputerPanel/ComputerButtons/PowerButton" to="." method="_on_power_button_pressed"]
 [connection signal="pressed" from="ComputerPanel/ComputerButtons/BackButton" to="." method="_on_back_button_pressed"]
