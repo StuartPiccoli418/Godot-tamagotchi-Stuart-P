@@ -16,7 +16,7 @@ var poop_counter = 0
 
 # counter limits
 var feed_limit = 4
-var pet_limit = 3
+var pet_limit = 15
 
 signal sleepingToggled(sleeping)
 signal itemConsumed(item)
@@ -117,7 +117,7 @@ func clean():
 	pet.gain_experience(1)
 
 func play():
-	pet.pet_stats.fun += 3
+	pet.pet_stats.fun += 7
 	pet.pet_stats.tiredness += 20
 	pet.gain_experience(1)
 	

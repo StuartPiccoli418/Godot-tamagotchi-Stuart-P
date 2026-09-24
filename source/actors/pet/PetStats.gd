@@ -33,6 +33,9 @@ var stats = ['happiness', 'hunger', 'hygiene', 'fun', 'social', 'tiredness']
 		hygiene = clamp(new_value, 0, (MAX_STAT - min((pet.pet_actions.poop_counter * 10), MAX_STAT))) # Clamp hygiene from 0 to 100, but if there is poop, dont go higher than max  * poops * 10, also make sure it cant go below 0.
 		update_total_stats()
 		emit_signal('hygieneChanged', hygiene)
+		print(hygiene)
+		
+		
 		
 @export var fun: int = 40:
 	set(new_value):
