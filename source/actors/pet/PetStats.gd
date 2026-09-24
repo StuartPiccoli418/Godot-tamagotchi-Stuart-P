@@ -84,10 +84,10 @@ func reset_average_stat_tracking():
 	update_total_stats()
 	
 func reset_and_randomize_stats():
-	happiness = randi_range(1,8) * 5
-	hunger = MAX_STAT - randi_range(1,8) * 5
-	hygiene = randi_range(1,8) * 5
-	fun = randi_range(1,8) * 5
-	social = randi_range(1,8) * 5
-	tiredness = MAX_STAT - randi_range(1,8) * 5
+	happiness = randi_range(1,8) * 2
+	hunger = MAX_STAT - randi_range(1,8) * 2
+	hygiene = randi_range(1,8) * 2
+	fun = randi_range(1,8) * 2
+	social = randi_range(1,8) * 2
+	tiredness = MAX_STAT - randi_range(1,8) * 2
 		

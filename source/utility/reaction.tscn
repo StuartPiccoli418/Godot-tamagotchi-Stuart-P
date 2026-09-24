@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://4jo3x1ersofk"]
+[gd_scene format=3 uid="uid://4jo3x1ersofk"]
 
-[ext_resource type="Script" path="res://source/utility/reaction.gd" id="1_xg6rr"]
+[ext_resource type="Script" uid="uid://bdlhhotnwic2o" path="res://source/utility/reaction.gd" id="1_xg6rr"]
 [ext_resource type="Texture2D" uid="uid://bl45wjpfru4jx" path="res://assets/img/PC Computer - Smol Ame - Emojis.png" id="1_xthkk"]
 
 [sub_resource type="Animation" id="Animation_mtvw3"]
@@ -98,21 +98,19 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2wf7"]
 _data = {
-"RESET": SubResource("Animation_mtvw3"),
-"popup": SubResource("Animation_lqb13")
+&"RESET": SubResource("Animation_mtvw3"),
+&"popup": SubResource("Animation_lqb13")
 }
 
-[node name="reaction" type="Marker2D"]
+[node name="reaction" type="Marker2D" unique_id=191895222]
 script = ExtResource("1_xg6rr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=281056752]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_xthkk")
 hframes = 4
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_v2wf7")
-}
-autoplay = "popup"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1036498862]
+libraries/ = SubResource("AnimationLibrary_v2wf7")
+autoplay = &"popup"
