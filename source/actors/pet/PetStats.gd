@@ -28,15 +28,13 @@ var stats = ['happiness', 'hunger', 'hygiene', 'fun', 'social', 'tiredness']
 		update_total_stats()
 		emit_signal('hungerChanged', hunger)
 		
-@export var hygiene: int = 80:
+@export var hygiene: int = 50:
 	set(new_value):
 		hygiene = clamp(new_value, 0, (MAX_STAT - min((pet.pet_actions.poop_counter * 10), MAX_STAT))) # Clamp hygiene from 0 to 100, but if there is poop, dont go higher than max  * poops * 10, also make sure it cant go below 0.
 		update_total_stats()
 		emit_signal('hygieneChanged', hygiene)
 		print(hygiene)
-		
-		
-		
+			
 @export var fun: int = 40:
 	set(new_value):
 		fun = clamp(new_value, 0, MAX_STAT)
@@ -65,7 +63,7 @@ var cumulative_avg_stats = 0.0
 var update_stats_count = 0
 
 func update_total_stats():
-	total_stats = happiness + (MAX_STAT - hunger) + hygiene + fun + social + (MAX_STAT - tiredness) # minus 100 hunger and tiredness because they are negative.
+	total_stats = (happiness + hunger + hygiene + fun + social + tiredness) # minus 100 hunger and tiredness because they are negative.
 	average_stats = round(total_stats / stats.size())
 	
 	cumulative_avg_stats += average_stats
@@ -87,10 +85,10 @@ func reset_average_stat_tracking():
 	update_total_stats()
 	
 func reset_and_randomize_stats():
-	happiness = randi_range(1,8) * 2
-	hunger = MAX_STAT - randi_range(1,8) * 2
-	hygiene = randi_range(1,8) * 2
-	fun = randi_range(1,8) * 2
-	social = randi_range(1,8) * 2
-	tiredness = MAX_STAT - randi_range(1,8) * 2
+	happiness = randi_range(1,8) * 7
+	hunger = MAX_STAT - randi_range(1,8) * 7
+	hygiene = randi_range(1,8) * 7
+	fun = randi_range(1,8) * 7
+	social = randi_range(1,8) * 7
+	tiredness = MAX_STAT - randi_range(1,8) * 7
 		

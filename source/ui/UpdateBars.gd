@@ -72,7 +72,7 @@ func update_happiness(value):
 	labelHappiness.text = str(value) + '%'
 	
 func update_hygiene(value):
-	hygieneBar.value = max(10, value)
+	hygieneBar.value = max(1, value)
 	labelHygiene.text = str(value) + '%'
 	
 func update_fun(value):
