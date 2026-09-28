@@ -62,8 +62,3 @@ func _recenter():
 	tween.tween_property(sprite, "rotation_degrees", host_r, TWEEN_DURATION)
 	return tween
 	
-
-
-
-
-
