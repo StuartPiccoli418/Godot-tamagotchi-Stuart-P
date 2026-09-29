@@ -118,7 +118,7 @@ func clean():
 
 func play():
 	pet.pet_stats.fun += 10
-	pet.pet_stats.tiredness -= 5
+	pet.pet_stats.tiredness -= 2
 	pet.gain_experience(1)
 	
 func socialize():

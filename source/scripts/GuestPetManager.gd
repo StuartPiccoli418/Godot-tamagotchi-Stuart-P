@@ -15,7 +15,7 @@ var current_guest_pet_resource = null
 var pet_introduction_ui = null
 var pet_outro_ui = null
 var HOURS_PER_DAY = 24
-var pet_exit_time = { "day": 0, "hour": 0, "minute": 0 }
+var pet_exit_time = { "day ": 0, "hour ": 0, "minute ": 0 }
 var pet_introduced = false
 var reviews_data: Dictionary = {}
 
@@ -65,7 +65,9 @@ func set_pet_exit_time():
 	var stay_duration_days = int(stay_duration_hours / HOURS_PER_DAY)
 	var hours = stay_duration_hours % HOURS_PER_DAY
 	pet_exit_time.day = timeUI.day + stay_duration_days
-	pet_exit_time.hour = timeUI.hour + hours
+	pet_exit_time.hour = timeUI.hour 
+	print(hours)
+	print(stay_duration_days)
 	pet_exit_time.minute = timeUI.minute
 	
 func introduce_guest_pet():
@@ -74,9 +76,10 @@ func introduce_guest_pet():
 	roomManager.queue_processing = true
 	current_guest_pet_resource = guest_pet_resources[randi() % guest_pet_resources.size()]
 	# Stay duration
-	stay_duration_hours = randi_range(1, 12)
+	stay_duration_hours = randi_range(4, 12)
+	print(stay_duration_hours)
 	set_pet_exit_time()
-	print('exit time:', pet_exit_time)
+	print('exit time: ', pet_exit_time)
 	
 	show_pet_intro(current_guest_pet_resource)
 	_pet.resource = current_guest_pet_resource

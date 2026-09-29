@@ -16,7 +16,7 @@ var day: int
 var hour: int
 var minute: int
 
-@export var INGAME_SPEED = 2
+@export var INGAME_SPEED = 10
 @export var INITIAL_HOUR = 12:
 	set(h):
 		INITIAL_HOUR = h
@@ -63,6 +63,7 @@ func set_time():
 	# "Day" + day + 1 since we don't want day to start at zero.
 
 	var display_h = hour
+	print(hour)
 	
 	# copy the hour to another var without overriding hour 
 	
@@ -91,6 +92,6 @@ func set_time():
 			
 func sleep_toggled(pet_state):
 	if pet_state == Pet.PetState.SLEEPING:
-		INGAME_SPEED = INGAME_SPEED * 2
+		INGAME_SPEED = INGAME_SPEED * 3
 	else:
-		INGAME_SPEED = INGAME_SPEED / 2
+		INGAME_SPEED = INGAME_SPEED / 3

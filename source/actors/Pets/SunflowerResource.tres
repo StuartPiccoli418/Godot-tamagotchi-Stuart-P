@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="petResource" format=3 uid="uid://bgyllwap3mgbj"]
+
+[ext_resource type="Script" uid="uid://cfbkr2xdkawqo" path="res://source/actors/pet/petResourceBase.gd" id="1_c5dcq"]
+[ext_resource type="Texture2D" uid="uid://bpurdyx1qkcpm" path="res://assets/img/Pets/Idk_Might_use_might_not_sunflower.jpg" id="2_jsyg2"]
+
+[resource]
+script = ExtResource("1_c5dcq")
+animal = 2
+texture = ExtResource("2_jsyg2")
