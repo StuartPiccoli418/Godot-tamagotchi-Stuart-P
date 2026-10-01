@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://b4p2io2d5v0ve" path="res://assets/img/UI/shopbasket.png" id="5_qeypx"]
 [ext_resource type="Texture2D" uid="uid://c11x6nsmrwr31" path="res://assets/img/UI/reviewstar.png" id="6_msmab"]
 [ext_resource type="Texture2D" uid="uid://ejunwhnvhvsm" path="res://assets/img/UI/bin.png" id="7_pj6x8"]
+[ext_resource type="Texture2D" uid="uid://bpurdyx1qkcpm" path="res://assets/img/Pets/Idk_Might_use_might_not_sunflower.jpg" id="8_7kdh8"]
 [ext_resource type="Texture2D" uid="uid://dm6jggkqy6kji" path="res://assets/img/UI/powerbutton.png" id="8_ac1i6"]
 [ext_resource type="Script" uid="uid://dhikh3nucfk16" path="res://source/ui/FoodShop.gd" id="11_llelh"]
+[ext_resource type="Script" uid="uid://ceti36uk7dkte" path="res://source/ui/disco_shop.gd" id="11_lneyx"]
 [ext_resource type="PackedScene" uid="uid://ywfy0nxoj4an" path="res://source/inventory/item_ui_slot.tscn" id="13_ova5w"]
 [ext_resource type="Script" uid="uid://bae0iw8v4uhxy" path="res://source/ui/RoomExpandShop.gd" id="14_ngfvj"]
 [ext_resource type="Texture2D" uid="uid://d2i8wlqqqv23s" path="res://assets/img/coin.png" id="14_w0mfg"]
@@ -265,6 +267,10 @@ texture_normal = ExtResource("4_0nmrn")
 layout_mode = 2
 texture_normal = ExtResource("5_qeypx")
 
+[node name="DiscoButton" type="TextureButton" parent="ComputerPanel/Desktop/VBoxContainer" unique_id=1217042319]
+layout_mode = 2
+texture_normal = ExtResource("8_7kdh8")
+
 [node name="VBoxContainer2" type="VBoxContainer" parent="ComputerPanel/Desktop" unique_id=2121384087]
 layout_mode = 1
 anchors_preset = 1
@@ -301,6 +307,46 @@ offset_bottom = 111.0
 [node name="RoomsButton" type="Button" parent="ComputerPanel/Desktop/TempButtons" unique_id=1229787384]
 layout_mode = 2
 text = "Rooms"
+
+[node name="DiscoShop" type="Control" parent="ComputerPanel" unique_id=1844000136]
+visible = false
+anchors_preset = 0
+offset_left = -162.0
+offset_top = 95.000015
+offset_right = -122.0
+offset_bottom = 135.0
+script = ExtResource("11_lneyx")
+
+[node name="ColorRect" type="ColorRect" parent="ComputerPanel/DiscoShop" unique_id=1189867156]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.666667
+offset_top = -223.6667
+offset_right = 288.00003
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.8716422, 0.8864843, 0.82751125, 1)
+
+[node name="ScrollContainer" type="ScrollContainer" parent="ComputerPanel/DiscoShop" unique_id=1582366477]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ReviewsContainer" type="VBoxContainer" parent="ComputerPanel/DiscoShop/ScrollContainer" unique_id=31649873]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="ComputerPanel/DiscoShop/ScrollContainer/ReviewsContainer" unique_id=296266692]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("15_vb7wd")
+text = "You Have no reviews yet."
+uppercase = true
 
 [node name="FoodShop" type="Control" parent="ComputerPanel" unique_id=1809688068]
 visible = false
@@ -600,6 +646,7 @@ libraries/ = SubResource("AnimationLibrary_jqw23")
 [connection signal="pressed" from="ComputerPanel/ComputerButtons/BackButton" to="." method="_on_back_button_pressed"]
 [connection signal="pressed" from="ComputerPanel/Desktop/VBoxContainer/StatsButton" to="." method="_on_stats_button_pressed"]
 [connection signal="pressed" from="ComputerPanel/Desktop/VBoxContainer/ShopButton" to="." method="_on_shop_button_pressed"]
+[connection signal="pressed" from="ComputerPanel/Desktop/VBoxContainer/DiscoButton" to="." method="_on_disco_button_pressed"]
 [connection signal="pressed" from="ComputerPanel/Desktop/VBoxContainer2/ReviewsButton" to="." method="_on_reviews_button_pressed"]
 [connection signal="pressed" from="ComputerPanel/Desktop/TempButtons/RoomsButton" to="." method="_on_rooms_button_pressed"]
 [connection signal="pressed" from="ComputerPanel/FoodShop/Button" to="ComputerPanel/FoodShop" method="_on_button_pressed"]
