@@ -18,7 +18,7 @@ func _ready():
 
 func process_time_events(_day, _hour, minute):
 	if pet.state == pet.PetState.SLEEPING:
-		pet.pet_stats.tiredness += 1
+		pet.pet_stats.tiredness += 5
 		pet.pet_actions.reaction_popup('sick')
 		if pet.pet_stats.tiredness == 0:
 			pet.pet_actions.toggle_sleep()
