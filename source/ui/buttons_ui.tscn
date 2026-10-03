@@ -1,6 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://xf3patarp24k"]
+[gd_scene format=3 uid="uid://xf3patarp24k"]
 
-[ext_resource type="Script" path="res://source/ui/ButtonsUI.gd" id="1_cyjms"]
+[ext_resource type="Script" uid="uid://bpjadaj70amq7" path="res://source/ui/ButtonsUI.gd" id="1_cyjms"]
 [ext_resource type="Texture2D" uid="uid://dm6jggkqy6kji" path="res://assets/img/UI/powerbutton.png" id="2_vy3u1"]
 [ext_resource type="Texture2D" uid="uid://b4ioxkxhxr8tj" path="res://assets/img/UI/spritesheetbuttons.png" id="3_m7wqv"]
 
@@ -29,7 +29,7 @@ region = Rect2(128, 0, 32, 32)
 atlas = ExtResource("3_m7wqv")
 region = Rect2(160, 0, 32, 32)
 
-[node name="ButtonsUI" type="Control" groups=["ButtonsUI"]]
+[node name="ButtonsUI" type="Control" unique_id=969736426 groups=["ButtonsUI"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -39,47 +39,47 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_cyjms")
 
-[node name="ComputerButton" type="TextureButton" parent="."]
+[node name="ComputerButton" type="TextureButton" parent="." unique_id=1345902858]
 custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-offset_left = 455.0
-offset_top = 376.0
-offset_right = 503.0
-offset_bottom = 424.0
+layout_mode = 0
+offset_left = 457.0
+offset_top = 435.0
+offset_right = 505.0
+offset_bottom = 483.0
 size_flags_horizontal = 6
 size_flags_vertical = 4
 texture_normal = ExtResource("2_vy3u1")
 stretch_mode = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=961969576]
 visible = false
 texture = ExtResource("3_m7wqv")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1450569452]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 56.0
+offset_left = 48.0
 offset_top = -102.0
-offset_right = -56.0
+offset_right = -64.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=44898781]
 layout_mode = 2
 size_flags_vertical = 4
 alignment = 1
 
-[node name="LoveButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="LoveButton" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=1641170881]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = SubResource("AtlasTexture_setar")
 stretch_mode = 0
 
-[node name="FeedButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="FeedButton" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=959766732]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 6
@@ -87,28 +87,28 @@ size_flags_vertical = 4
 texture_normal = SubResource("AtlasTexture_ge7rg")
 stretch_mode = 0
 
-[node name="CleanButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="CleanButton" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=1879884482]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = SubResource("AtlasTexture_e5sre")
 stretch_mode = 0
 
-[node name="FunButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="FunButton" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=797736446]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = SubResource("AtlasTexture_1g4iy")
 stretch_mode = 0
 
-[node name="SocialButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="SocialButton" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=419335492]
 custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 size_flags_horizontal = 6
 texture_normal = SubResource("AtlasTexture_6x0gd")
 stretch_mode = 0
 
-[node name="SleepButton" type="TextureButton" parent="MarginContainer/HBoxContainer"]
+[node name="SleepButton" type="TextureButton" parent="MarginContainer/HBoxContainer" unique_id=401660714]
 custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 size_flags_horizontal = 6

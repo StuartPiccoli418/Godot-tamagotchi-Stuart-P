@@ -1,11 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://r1srkhptyee1"]
+[gd_scene format=3 uid="uid://r1srkhptyee1"]
 
-[ext_resource type="Script" path="res://source/actors/pet/pet.gd" id="1_mp1so"]
-[ext_resource type="Script" path="res://source/actors/ShakeTween.gd" id="3_00fq3"]
-[ext_resource type="Script" path="res://source/actors/pet/PetStats.gd" id="4_mmn7c"]
-[ext_resource type="Script" path="res://source/actors/pet/PetActions.gd" id="5_hjdxb"]
+[ext_resource type="Script" uid="uid://cv1jjjksbhmg" path="res://source/actors/pet/pet.gd" id="1_mp1so"]
+[ext_resource type="Script" uid="uid://la0wypul2g84" path="res://source/actors/ShakeTween.gd" id="3_00fq3"]
+[ext_resource type="Script" uid="uid://bfyh44i3onahw" path="res://source/actors/pet/PetStats.gd" id="4_mmn7c"]
+[ext_resource type="Script" uid="uid://b87tewjdjhde7" path="res://source/actors/pet/PetActions.gd" id="5_hjdxb"]
 [ext_resource type="FontFile" uid="uid://bto7agdrkocgn" path="res://assets/fonts/PixeloidSans.ttf" id="5_q3mnx"]
-[ext_resource type="Script" path="res://source/actors/pet/PetTimeEvents.gd" id="6_0rhmh"]
+[ext_resource type="Script" uid="uid://bbykjqt1r8eue" path="res://source/actors/pet/PetTimeEvents.gd" id="6_0rhmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkmqf"]
 size = Vector2(94, 96)
@@ -55,40 +55,38 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_js4yl"]
 _data = {
-"Eating": SubResource("Animation_p1d6a"),
-"RESET": SubResource("Animation_tbwsd")
+&"Eating": SubResource("Animation_p1d6a"),
+&"RESET": SubResource("Animation_tbwsd")
 }
 
-[node name="Pet" type="CharacterBody2D" groups=["Pet"]]
+[node name="Pet" type="CharacterBody2D" unique_id=1516759660 groups=["Pet"]]
 collision_layer = 0
 script = ExtResource("1_mp1so")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=226163710]
 position = Vector2(-0.999969, -2)
 scale = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=133103450]
 position = Vector2(-2, -2)
 shape = SubResource("RectangleShape2D_tkmqf")
 
-[node name="ShakeTween" type="Node" parent="."]
+[node name="ShakeTween" type="Node" parent="." unique_id=387729565]
 script = ExtResource("3_00fq3")
 
-[node name="PetStats" type="Node" parent="."]
+[node name="PetStats" type="Node" parent="." unique_id=1547549303]
 script = ExtResource("4_mmn7c")
 
-[node name="PetActions" type="Node" parent="."]
+[node name="PetActions" type="Node" parent="." unique_id=1173974030]
 script = ExtResource("5_hjdxb")
 
-[node name="PetTimeEvents" type="Node" parent="."]
+[node name="PetTimeEvents" type="Node" parent="." unique_id=1756162880]
 script = ExtResource("6_0rhmh")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_js4yl")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1284586006]
+libraries/ = SubResource("AnimationLibrary_js4yl")
 
-[node name="PetDebugLabel" type="Label" parent="."]
+[node name="PetDebugLabel" type="Label" parent="." unique_id=1089028920]
 offset_left = -40.0
 offset_top = -91.0
 offset_right = 40.0
