@@ -1,6 +1,7 @@
 extends Node
 
 var is_stay_over_processing = false
+# stay over is not true 
 @export var guest_pet_resources: Array[petResource]
 @export var stay_duration_hours: int  # Duration in hours
 
@@ -62,19 +63,20 @@ func load_json_file(file_path: String):
 func check_if_stay_over(day, hour, minute):
 	if not pet_introduced:
 		return
-
+# Don't do anything if the pet is not introduced (set to false)
 	if is_stay_over_processing:
 		return
+# Don't do anything if the stay over is processing 
 
 	var current_total_minutes = day * 1440 + hour * 60 + minute
-	var exit_total_minutes = (
-		pet_exit_time.day * 1440
-		+ pet_exit_time.hour * 60
-		+ pet_exit_time.minute
-	)
+	var exit_total_minutes = (pet_exit_time.day * 1440 + pet_exit_time.hour * 60 + pet_exit_time.minute)
+# converts the exit time into minutes (etc: 2*1440 + 4*60 + 50)
+
 
 	if current_total_minutes >= exit_total_minutes:
 		print("EXPIRATION TRIGGERED: ", current_guest_pet_resource.name)
+
+# Bug testing, if the current minutes is more than or equaled to the exit total minutes, print the current guest pet namee
 
 		# Lock immediately, before starting the transition.
 		is_stay_over_processing = true
@@ -89,19 +91,27 @@ func set_pet_exit_time():
 	pet_exit_time.hour = int((exit_total_minutes % 1440) / 60)
 	pet_exit_time.minute = exit_total_minutes % 60
 	
+	#convert day, hour, and minute back into their original units.
 
 func introduce_guest_pet():
 	print("INTRO: function started")
+
+#The introduced_guest_pet function has started
+#More debugging
 
 	while roomManager.queue_processing:
 		await get_tree().create_timer(1.0).timeout
 
 	roomManager.queue_processing = true
 
+# wait for the room manager to be free, then locks the room
+
 	if guest_pet_resources.is_empty():
 		push_error("GuestPetManager: No pet resources assigned!")
 		roomManager.queue_processing = false
 		return
+
+# Checks if the array has pets assigned (it does)
 
 	print("Total guest pet resources: ", guest_pet_resources.size())
 
@@ -111,12 +121,21 @@ func introduce_guest_pet():
 			print("Pet index ", i, " is EMPTY")
 		else:
 			print("Pet index ", i, ": ", pet_resource.name)
+			
+# This was mostly for debugging
+# this prints out the pet index starting from 0 in the debugger
+#Pet index 0: Jeff
+#Pet index 1: Cal
+#Pet index 2: Xandra
 
 	var selected_index = randi_range(0, guest_pet_resources.size() - 1)
 	current_guest_pet_resource = guest_pet_resources[selected_index]
 
 	print("Selected index: ", selected_index)
 	print("Selected pet: ", current_guest_pet_resource.name)
+
+# After the randi, print the selected index and pet
+# this was to test if the randi was working correctly 
 
 	stay_duration_hours = randi_range(1, 12)
 	set_pet_exit_time()
@@ -158,6 +177,9 @@ func close_existing_pet_ui():
 	if is_instance_valid(pet_outro_ui):
 		pet_outro_ui.queue_free()
 		pet_outro_ui = null
+		
+#Checks if either UI exists 
+# if it does, it queue_free schedules it for deletion, and the variable is reset to null.
 
 func show_pet_outro(pet_details):
 	roomManager.switch_to_room(roomScene)
@@ -170,11 +192,14 @@ func show_pet_outro(pet_details):
 func _stay_over():
 	print("STAY OVER: Started")
 
+# Stay over has started
+
 	while roomManager.queue_processing:
 		await get_tree().create_timer(0.1).timeout
 
 	is_stay_over_processing = true
 	print("STAY OVER: Started")
+
 
 	while roomManager.queue_processing:
 		print("STAY OVER: Waiting for room lock")
@@ -182,6 +207,9 @@ func _stay_over():
 
 	roomManager.queue_processing = true
 	print("STAY OVER: Queue locked")
+	
+# The function waits for the room to become available, 
+# then locks it to prevent conflicting transitions.
 
 	var pet_stay_details = get_pet_stay_details(
 		current_guest_pet_resource
@@ -205,6 +233,13 @@ func _stay_over():
 	print("STAY OVER: Next guest finished entering")
 	is_stay_over_processing = false
 	print("STAY OVER: Transition complete")
+	
+#Calculate the guest's results.
+#Show the outro UI.
+#Wait for the outro to close.
+#Animate the old pet walking out.
+#Mark the guest as no longer present.
+#Release the room lock.
 
 func get_pet_stay_details(pet_data):
 	var average_stats = _pet.pet_stats.get_overall_average_stats()
