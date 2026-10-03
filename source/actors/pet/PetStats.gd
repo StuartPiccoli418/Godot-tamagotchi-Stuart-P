@@ -62,7 +62,7 @@ var cumulative_avg_stats = 0.0
 var update_stats_count = 0
 
 func update_total_stats():
-	total_stats = (happiness + hunger + hygiene + fun + social + tiredness) # minus 100 hunger and tiredness because they are negative.
+	total_stats = (happiness + hunger + hygiene + fun + social + tiredness) 
 	average_stats = round(total_stats / stats.size())
 	
 	cumulative_avg_stats += average_stats

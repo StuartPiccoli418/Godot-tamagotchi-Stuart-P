@@ -17,7 +17,7 @@ var current_guest_pet_resource = null
 var pet_introduction_ui = null
 var pet_outro_ui = null
 var HOURS_PER_DAY = 24
-var pet_exit_time = { "day": 0, "hour": 0, "minute": 0 }
+var pet_exit_time = { "day ": 0, "hour ": 0, "minute ": 0 }
 var pet_introduced = false
 var reviews_data: Dictionary = {}
 
@@ -81,6 +81,7 @@ func check_if_stay_over(day, hour, minute):
 		_stay_over()
 
 func set_pet_exit_time():
+<<<<<<< HEAD
 	var current_total_minutes = (timeUI.day * 1440+ timeUI.hour * 60 + timeUI.minute)
 
 	var exit_total_minutes = current_total_minutes + stay_duration_hours * 60
@@ -88,6 +89,15 @@ func set_pet_exit_time():
 	pet_exit_time.day = int(exit_total_minutes / 1440)
 	pet_exit_time.hour = int((exit_total_minutes % 1440) / 60)
 	pet_exit_time.minute = exit_total_minutes % 60
+=======
+	var stay_duration_days = int(stay_duration_hours / HOURS_PER_DAY)
+	var hours = stay_duration_hours % HOURS_PER_DAY
+	pet_exit_time.day = timeUI.day + stay_duration_days
+	pet_exit_time.hour = timeUI.hour 
+	print(hours)
+	print(stay_duration_days)
+	pet_exit_time.minute = timeUI.minute
+>>>>>>> e0c409fb6045268f438ae1f669eb52d5dd5beae0
 	
 
 func introduce_guest_pet():
@@ -97,6 +107,7 @@ func introduce_guest_pet():
 		await get_tree().create_timer(1.0).timeout
 
 	roomManager.queue_processing = true
+<<<<<<< HEAD
 
 	if guest_pet_resources.is_empty():
 		push_error("GuestPetManager: No pet resources assigned!")
@@ -123,6 +134,16 @@ func introduce_guest_pet():
 
 	await show_pet_intro(current_guest_pet_resource)
 
+=======
+	current_guest_pet_resource = guest_pet_resources[randi() % guest_pet_resources.size()]
+	# Stay duration
+	stay_duration_hours = randi_range(4, 12)
+	print(stay_duration_hours)
+	set_pet_exit_time()
+	print('exit time: ', pet_exit_time)
+	
+	show_pet_intro(current_guest_pet_resource)
+>>>>>>> e0c409fb6045268f438ae1f669eb52d5dd5beae0
 	_pet.resource = current_guest_pet_resource
 	_pet.pet_stats.reset_stats()
 	await _pet.walk_into_scene()

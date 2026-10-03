@@ -15,7 +15,7 @@ var pet_counter = 0
 var poop_counter = 0
 
 # counter limits
-var feed_limit = 4
+var feed_limit = 15
 var pet_limit = 15
 
 signal sleepingToggled(sleeping)
@@ -85,7 +85,7 @@ func handle_food_reaction():
 		pet.pet_stats.tiredness -= 5
 		return
 	reaction_popup('happy')
-	pet.pet_stats.hunger += 25
+	pet.pet_stats.hunger += 50
 	pet.pet_stats.happiness += 5
 	pet.gain_experience(2)
 	
@@ -118,7 +118,7 @@ func clean():
 
 func play():
 	pet.pet_stats.fun += 10
-	pet.pet_stats.tiredness -= 5
+	pet.pet_stats.tiredness -= 2
 	pet.gain_experience(1)
 	
 func socialize():
