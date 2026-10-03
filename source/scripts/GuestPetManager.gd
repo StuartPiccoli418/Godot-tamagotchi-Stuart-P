@@ -1,7 +1,9 @@
 extends Node
 
+var is_stay_over_processing = false
 @export var guest_pet_resources: Array[petResource]
 @export var stay_duration_hours: int  # Duration in hours
+
 
 @onready var petIntroductionUI = preload("res://source/ui/pet_introduction_ui.tscn")
 @onready var petOutroUI = preload("res://source/ui/pet_outro_ui.tscn")
@@ -55,40 +57,85 @@ func load_json_file(file_path: String):
 			print("Error reading file")
 	else:
 		print("File dosen't exist")
-	
-	
+
+
 func check_if_stay_over(day, hour, minute):
-	if pet_introduced and day == pet_exit_time.day and hour == pet_exit_time.hour and minute == pet_exit_time.minute:
+	if not pet_introduced:
+		return
+
+	if is_stay_over_processing:
+		return
+
+	var current_total_minutes = day * 1440 + hour * 60 + minute
+	var exit_total_minutes = (
+		pet_exit_time.day * 1440
+		+ pet_exit_time.hour * 60
+		+ pet_exit_time.minute
+	)
+
+	if current_total_minutes >= exit_total_minutes:
+		print("EXPIRATION TRIGGERED: ", current_guest_pet_resource.name)
+
+		# Lock immediately, before starting the transition.
+		is_stay_over_processing = true
 		_stay_over()
 
 func set_pet_exit_time():
-	var stay_duration_days = int(stay_duration_hours / HOURS_PER_DAY)
-	var hours = stay_duration_hours % HOURS_PER_DAY
-	pet_exit_time.day = timeUI.day + stay_duration_days
-	pet_exit_time.hour = timeUI.hour + hours
-	pet_exit_time.minute = timeUI.minute
+	var current_total_minutes = (timeUI.day * 1440+ timeUI.hour * 60 + timeUI.minute)
+
+	var exit_total_minutes = current_total_minutes + stay_duration_hours * 60
+
+	pet_exit_time.day = int(exit_total_minutes / 1440)
+	pet_exit_time.hour = int((exit_total_minutes % 1440) / 60)
+	pet_exit_time.minute = exit_total_minutes % 60
 	
+
 func introduce_guest_pet():
+	print("INTRO: function started")
+
 	while roomManager.queue_processing:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(1.0).timeout
+
 	roomManager.queue_processing = true
-	current_guest_pet_resource = guest_pet_resources[randi() % guest_pet_resources.size()]
-	# Stay duration
+
+	if guest_pet_resources.is_empty():
+		push_error("GuestPetManager: No pet resources assigned!")
+		roomManager.queue_processing = false
+		return
+
+	print("Total guest pet resources: ", guest_pet_resources.size())
+
+	for i in range(guest_pet_resources.size()):
+		var pet_resource = guest_pet_resources[i]
+		if pet_resource == null:
+			print("Pet index ", i, " is EMPTY")
+		else:
+			print("Pet index ", i, ": ", pet_resource.name)
+
+	var selected_index = randi_range(0, guest_pet_resources.size() - 1)
+	current_guest_pet_resource = guest_pet_resources[selected_index]
+
+	print("Selected index: ", selected_index)
+	print("Selected pet: ", current_guest_pet_resource.name)
+
 	stay_duration_hours = randi_range(1, 12)
 	set_pet_exit_time()
-	print('exit time:', pet_exit_time)
-	
-	show_pet_intro(current_guest_pet_resource)
+
+	await show_pet_intro(current_guest_pet_resource)
+
 	_pet.resource = current_guest_pet_resource
 	_pet.pet_stats.reset_stats()
 	await _pet.walk_into_scene()
-	
+
 	pet_introduced = true
 	roomManager.queue_processing = false
 	Global.add_visitor_to_array(_pet.resource.get_animal_type_name())
 
 func show_pet_intro(pet_data):
+	print("SHOW INTRO UI: ", get_instance_id())
+
 	roomManager.switch_to_room(roomScene)
+
 	var pet_details = {
 		"image": pet_data.texture,
 		"name": pet_data.name,
@@ -96,10 +143,21 @@ func show_pet_intro(pet_data):
 		"days": int(stay_duration_hours / HOURS_PER_DAY),
 		"hours": stay_duration_hours % HOURS_PER_DAY
 	}
+
 	pet_introduction_ui = petIntroductionUI.instantiate()
 	get_tree().get_root().add_child.call_deferred(pet_introduction_ui)
+
 	await pet_introduction_ui.ready
 	pet_introduction_ui.set_pet_info(pet_details)
+	
+func close_existing_pet_ui():
+	if is_instance_valid(pet_introduction_ui):
+		pet_introduction_ui.queue_free()
+		pet_introduction_ui = null
+
+	if is_instance_valid(pet_outro_ui):
+		pet_outro_ui.queue_free()
+		pet_outro_ui = null
 
 func show_pet_outro(pet_details):
 	roomManager.switch_to_room(roomScene)
@@ -108,20 +166,45 @@ func show_pet_outro(pet_details):
 	pet_outro_ui.set_pet_info(pet_details)
 	await pet_outro_ui.tree_exited
 	
+	
 func _stay_over():
+	print("STAY OVER: Started")
+
 	while roomManager.queue_processing:
-		await get_tree().create_timer(1).timeout
+		await get_tree().create_timer(0.1).timeout
+
+	is_stay_over_processing = true
+	print("STAY OVER: Started")
+
+	while roomManager.queue_processing:
+		print("STAY OVER: Waiting for room lock")
+		await get_tree().create_timer(0.1).timeout
+
 	roomManager.queue_processing = true
-	
-	# Get stay stats and info
-	var pet_stay_details = get_pet_stay_details(current_guest_pet_resource)
-	
+	print("STAY OVER: Queue locked")
+
+	var pet_stay_details = get_pet_stay_details(
+		current_guest_pet_resource
+	)
 	Global.reviewsInfo.append(pet_stay_details)
+	print("STAY OVER: Details collected")
+
 	await show_pet_outro(pet_stay_details)
+	print("STAY OVER: Outro closed")
+
 	await _pet.walk_out_of_scene()
+	print("STAY OVER: Old pet walked out")
+
 	pet_introduced = false
 	roomManager.queue_processing = false
-	introduce_guest_pet()
+
+	print("STAY OVER: Introducing next guest")
+
+	await introduce_guest_pet()
+
+	print("STAY OVER: Next guest finished entering")
+	is_stay_over_processing = false
+	print("STAY OVER: Transition complete")
 
 func get_pet_stay_details(pet_data):
 	var average_stats = _pet.pet_stats.get_overall_average_stats()
