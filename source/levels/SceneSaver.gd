@@ -46,13 +46,13 @@ func load_game():
 		print("Failed to load saved game.")
 		return
 		
-#	for saved_data in saved_game.saved_data:
-#		if saved_data is SavedRoomInfo:
-#			roomManager.on_load_game(saved_data)
-#		elif saved_data is SavedTime:
-#			timeUI.on_load_game(saved_data)
-#		elif saved_data is SavedGlobal:
-#			Global.on_load_game(saved_data)
+	for saved_data in saved_game.saved_data:
+		if saved_data is SavedRoomInfo:
+			roomManager.on_load_game(saved_data)
+		elif saved_data is SavedTime:
+			timeUI.on_load_game(saved_data)
+		elif saved_data is SavedGlobal:
+			Global.on_load_game(saved_data)
 
 	
 func _on_button_pressed():

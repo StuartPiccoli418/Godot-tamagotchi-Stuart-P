@@ -16,7 +16,7 @@ var poop_counter = 0
 
 # counter limits
 var feed_limit = 4
-var pet_limit = 3
+var pet_limit = 15
 
 signal sleepingToggled(sleeping)
 signal itemConsumed(item)
@@ -75,17 +75,17 @@ func handle_food_reaction():
 	if feed_counter > feed_limit or pet.pet_stats.hunger == 0:
 		print('feed counter 4: puke')
 		pet.pet_stats.happiness -= 15
-		pet.pet_stats.tiredness += 10
+		pet.pet_stats.tiredness -= 10
 		reaction_popup('sad')
 		return
 	if feed_counter == feed_limit or pet.pet_stats.hunger < 10:
 		reaction_popup('sick')
 		pet.pet_stats.hunger -= 10
 		pet.pet_stats.happiness -= 5
-		pet.pet_stats.tiredness += 5
+		pet.pet_stats.tiredness -= 5
 		return
 	reaction_popup('happy')
-	pet.pet_stats.hunger -= 25
+	pet.pet_stats.hunger += 25
 	pet.pet_stats.happiness += 5
 	pet.gain_experience(2)
 	
@@ -99,7 +99,7 @@ func petting():
 	if pet_counter == pet_limit:
 		reaction_popup('sick')
 		print('enough pets')
-		pet.pet_stats.happiness +=5
+		pet.pet_stats.happiness +=3
 		return
 	reaction_popup('love')
 	pet.pet_stats.happiness += 15
@@ -107,24 +107,23 @@ func petting():
 	
 func clean():
 	if pet.pet_stats.hygiene > 90:
-		pet.pet_stats.fun -=15
-		pet.pet_stats.happiness -= 10
-	elif pet.pet_stats.hygiene > 70:
 		pet.pet_stats.fun -= 10
+		pet.pet_stats.happiness -= 5
+	elif pet.pet_stats.hygiene > 70:
+		pet.pet_stats.fun -= 5
 	elif pet.pet_stats.hygiene < 30:
-		pet.pet_stats.happiness += 15
-	pet.pet_stats.hygiene = 100
+		pet.pet_stats.happiness += 5
+	pet.pet_stats.hygiene += 10
 	pet.gain_experience(1)
 
 func play():
-	pet.pet_stats.fun += 25
-	pet.pet_stats.tiredness += 5
+	pet.pet_stats.fun += 10
+	pet.pet_stats.tiredness -= 5
 	pet.gain_experience(1)
 	
 func socialize():
-	pet.pet_stats.social += 25
-	pet.pet_stats.tiredness += 5
-	pet.pet_stats.hunger += 5
+	pet.pet_stats.social += 10
+	pet.pet_stats.tiredness -= 5
 	pet.gain_experience(1)
 
 func toggle_sleep():
@@ -141,7 +140,7 @@ func random_poop_chance():
 		spawn_poop()
 		
 func spawn_poop():
-	pet.pet_stats.hygiene -= 10
+	pet.pet_stats.hygiene -= 20
 	poop_counter += 1
 	var poop = poopItem.instantiate()
 	pet.get_parent().add_child(poop)
@@ -150,7 +149,8 @@ func spawn_poop():
 
 func poop_removed():
 	poop_counter -= 1
-	pet.pet_stats.happiness += 5
+	pet.pet_stats.happiness += 10
+	pet.pet_stats.hygiene += 10
 	
 func reaction_popup(reaction):
 	var reaction_instance = reactionScene.instantiate()

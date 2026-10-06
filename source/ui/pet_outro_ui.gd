@@ -59,10 +59,22 @@ func animation_tween(coins, final_pos):
 func _coin_tween_finished():
 	Global.coins += 1
 	
+
+var claim_in_progress = false
+
 func _on_continue_button_pressed():
-	self.visible = false
+	if claim_in_progress:
+		return
+
+	claim_in_progress = true
+	claimButton.disabled = true
+	visible = false
+
 	get_tree().paused = false
+
 	var coin_size = coinDisplay.sprite.texture.get_size()
-	var final_global_pos = coinDisplay.global_position - coin_size/2
+	var final_global_pos = coinDisplay.global_position - coin_size / 2
+
 	await animation_tween(coins_amount, final_global_pos)
+
 	queue_free()
